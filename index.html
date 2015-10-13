@@ -9,7 +9,7 @@
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
-
+    
     <!-- VENDOR SCRIPTS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -18,12 +18,55 @@
     <script src="base.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h1>We're in good shape.</h1>
+  <div class="container">
+  <!--This is the jumbotron -->
+    
+      <div class="jumbotron">
+        <h3>Post count:</h3>
+        <p id="postCount"></p>
+        <h1 id="heading">New Post</h1>
+        <!--This is the form field -->
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <div class="input-group">
+                <textarea name="" id="todo-content" cols="90" rows="2" class="form-control"></textarea>
+                    <button class="btn btn-default" type="submit" id="submit">Post!</button>
+                  </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+          </div><!-- /.row -->
+        <!-- End of the form field -->
+      </div>
+    <hr>
+    
+  <!-- End of the jumbotron -->
+
+  <!-- This is the progress bar -->
+
+
+
+  <!-- This is where the posts go... -->
+
+  <div class = "row">
+      <div class = "col-md-6 text-left todo-task-div">  
+        <h1>New Posts</h1>
+        <div>
+          <ul class="list-group" id="todo">
+          </ul>
         </div>
       </div>
-    </div>
+      <div class = "col-md-6 text-left">  
+       <h1>Old Posts</h1>
+        <div>
+          <ul class="list-group" id="done">
+          </ul>
+        </div>
+      </div>
+  </div>
+  <!-- End of posts table -->
+
+
+  </div>
+
   </body>
 </html>
