@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Blank</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- VENDOR SCRIPTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- APPLICATION SCRIPTS -->
+    <script src="scripts.js"></script>
+  </head>
+    <body>
+      <div id ="page-wrapper" class="container">
+  <!--This is the jumbotron -->
+    
+          <div class="jumbotron">
+            <h3>Post count:</h3>
+            <p id="postCount"></p>
+              <h1 id="heading">New Post</h1>
+          <!--This is the form field -->
+              <div class="row">
+                  <div class="col-md-6 col-md-offset-3">
+                      <form id="newPost">
+                        <input name="content" id="post-content" class="form-control" cols="90" rows="2" type ="text"></input>
+                        <input class="btn btn-primary" type="submit" value="Make a post"></input>
+                      </form><!-- End of the form field -->
+                  </div><!-- /.col-lg-6 -->
+              </div><!-- /.row -->
+          </div> <!-- End of the jumbotron -->
+
+
+  <!-- This is where the posts go... -->
+<hr>
+
+  <div class = "row">
+      <div class = "col-md-6 col-md-offset-3 todo-task-div">  
+        <h1>New Posts</h1>
+        <div>
+          <ul class="posts list-group">
+            <% posts.forEach(function(post)  { %>
+            <li class="post list-group-item"><%= post.content %> <span data-id="<%= post._id %>" class="close delete">X</span></li>
+            <% }); %>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <!-- End of posts table -->
+
+
+    </div>
+  </body>
+</html>
