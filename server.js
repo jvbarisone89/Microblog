@@ -13,11 +13,9 @@ app.use(express.static('public'));
 bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 var db = require('./models/index.js');
 
-// Routes //
-
+// Routes 
 app.get('/posts', function(req, res) {
     db.Post.find({}, function(err, posts) {
         if (err) console.log(err);
@@ -27,6 +25,7 @@ app.get('/posts', function(req, res) {
     });
 });
 
+//Create new Post
 app.post('/posts', function(req, res) {
     // swap for post data later
     console.log(req.body);
@@ -38,12 +37,13 @@ app.post('/posts', function(req, res) {
     });
 });
 
+//Delete Post
 app.delete('/posts/:_id', function(req, res) {
     console.log('post id is: ', req.params);
     db.Post.find({
         _id: req.params._id
     }).remove(function(err, post) {
-        console.log("post deleted");
+        console.log("Post deleted");
         res.json("That post is dead");
     });
 });
