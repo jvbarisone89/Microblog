@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 
 var entrySchema = mongoose.Schema({
-    content: String,
-    date: { type: Date, default: Date.now },
+    item1: String,
+    item2: String,
+    item3: String,
+    date: String
 });
 
 var Post = mongoose.model('Post', entrySchema);

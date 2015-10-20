@@ -17,8 +17,18 @@ $('#newPost').on('submit', function(e){
     })
       .done(function(data) {
         console.log("made a post successfully: ", data);
-        var postHtml = "<li class='post list-group-item'>" + data.content + " <span data-id='" + data._id + "' class='close delete'>X</span></li>";
+        
+        var date = new Date().toDateString();
+        var postHtml = "<div class='col-md-4 post well'>" 
+        + "Date:<p class='date'>" + date + "</p>" + "<ol><li>" + data.item1 + "</li>" 
+        + "<li>" + data.item2 + "</li>"
+        + "<li>" + data.item3 + "</li></ol>"
+        + " <span data-id='" 
+        + data._id  
+        + "' class='close delete'>x</span></div>";
+
         $('.posts').append(postHtml);
+        postCounter();
        	$('.post').on('click', '.close', closeCallback);
         $('#newPost')[0].reset();
         })
@@ -29,13 +39,11 @@ $('#newPost').on('submit', function(e){
 });
 
 //Delete Post
-
 var closeCallback = function(e) {
       e.preventDefault();
-      console.log("delete me");
 
       var postId = $(this).data().id;
-      var post = $(this).closest('li');
+      var post = $(this).closest('div');
 
       $.ajax({
         type: "delete",
@@ -44,9 +52,10 @@ var closeCallback = function(e) {
       .done(function(data) {
         console.log(data);
         $(post).remove();
+        postCounter();
       })
       .fail(function(data) {
-        console.log("Failed to terminate a cat!");
+        console.log("Failed to terminate a post!");
       });
     };
 
@@ -57,9 +66,11 @@ function postCounter(){
 	if (postCount === 0){
 	$('#postCount').append('0');
 	} else {
-	$('#postCount').empty();
-	$('#postCount').append(postCount);
+  $('#postCount').empty();
+	$('#postCount').append($('.posts div').length);
 	}
 }
+
+postCounter();
 
 });

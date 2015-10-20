@@ -6,7 +6,6 @@ var express = require("express"),
     path = require("path"),
     bodyParser = require("body-parser");
 
-
 //Middleware
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -20,7 +19,7 @@ app.get('/posts', function(req, res) {
     db.Post.find({}, function(err, posts) {
         if (err) console.log(err);
         res.render('index', {
-            posts: posts
+        posts: posts
         });
     });
 });
@@ -29,7 +28,12 @@ app.get('/posts', function(req, res) {
 app.post('/posts', function(req, res) {
     // swap for post data later
     console.log(req.body);
-    db.Post.create(req.body, function(err, post) {
+    var date = new Date().toDateString();
+    var post = {item1: req.body.item1,
+                item2: req.body.item2,
+                item3: req.body.item3,
+                date: date};
+    db.Post.create(post, function(err, post) {
         if (err) {
             console.log(err);
         }
@@ -48,6 +52,7 @@ app.delete('/posts/:_id', function(req, res) {
     });
 });
 
+//Initialize server
 var server = app.listen(process.env.PORT || 3000, function () {
   console.log('Example app listening at http://localhost:3000/');
 });
